@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Neocities Manager</title>
 	<link rel="stylesheet" href="./style.css">
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
@@ -15,12 +15,12 @@
 		<header class="header">
 			<div class="header-content">
 				<div class="headerItem">
-					<h1><i class="fas fa-globe"></i> Neocities Manager</h1>
+					<h1><i class="fas fa-cloud"></i> Neocities Manager</h1>
 					<span class="toggleBtn" title="Toggle Dark Mode"></span>
 				</div>
 				<div class="user-info" id="userInfo" style="display: none;">
 					<span id="usernameDisplay"></span>
-					<button class="btn btn-logout" onclick="logout()">
+					<button class="btn-logout" onclick="logout()">
 						<i class="fas fa-sign-out-alt"></i> Logout
 					</button>
 				</div>
@@ -105,19 +105,17 @@
 			<div class="toolbar">
 				<div class="toolbar-left">
 					<button class="btn btn-primary" onclick="showUploadModal()">
-						<i class="fas fa-upload"></i> Upload Files
+						<i class="fas fa-upload"></i> Upload
 					</button>
 					<button class="btn btn-secondary" onclick="showCreateModal()">
-						<i class="fas fa-plus"></i> Create File
+						<i class="fas fa-plus"></i> Create
 					</button>
 					<button class="btn btn-info" onclick="refreshFiles()">
-						<i class="fas fa-refresh"></i> Refresh
+						<i class="fas fa-sync-alt"></i> Refresh
 					</button>
 				</div>
-				<div class="toolbar-right">
-					<div class="breadcrumb" id="breadcrumb">
-						<span onclick="navigateTo('')">Home</span>
-					</div>
+				<div class="breadcrumb" id="breadcrumb">
+					<span onclick="navigateTo('')">Home</span>
 				</div>
 			</div>
 
@@ -149,9 +147,14 @@
 							<label>Upload to folder (optional):</label>
 							<input type="text" id="uploadPath" placeholder="e.g., images, css, js">
 						</div>
-						<button type="submit" class="btn btn-primary">
-							<i class="fas fa-upload"></i> Upload
-						</button>
+						<div class="form-actions">
+							<button type="button" class="btn btn-secondary" onclick="closeModal('uploadModal')">
+								Cancel
+							</button>
+							<button type="submit" class="btn btn-primary">
+								<i class="fas fa-upload"></i> Upload
+							</button>
+						</div>
 					</form>
 				</div>
 			</div>
@@ -161,7 +164,7 @@
 		<div class="modal" id="createModal">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h3><i class="fas fa-plus"></i> Create New File</h3>
+					<h3><i class="fas fa-plus"></i> Create File</h3>
 					<button class="modal-close" onclick="closeModal('createModal')">&times;</button>
 				</div>
 				<div class="modal-body">
@@ -178,9 +181,14 @@
 							<label>Content:</label>
 							<textarea id="createContent" rows="10" placeholder="Enter file content here..."></textarea>
 						</div>
-						<button type="submit" class="btn btn-primary">
-							<i class="fas fa-plus"></i> Create File
-						</button>
+						<div class="form-actions">
+							<button type="button" class="btn btn-secondary" onclick="closeModal('createModal')">
+								Cancel
+							</button>
+							<button type="submit" class="btn btn-primary">
+								<i class="fas fa-plus"></i> Create
+							</button>
+						</div>
 					</form>
 				</div>
 			</div>
@@ -196,14 +204,14 @@
 				<div class="modal-body">
 					<form id="editForm">
 						<div class="form-group">
-							<textarea id="editContent" rows="25" placeholder="Loading content..."></textarea>
+							<textarea id="editContent" rows="20" placeholder="Loading content..."></textarea>
 						</div>
 						<div class="form-actions">
-							<button type="submit" class="btn btn-primary">
-								<i class="fas fa-save"></i> Save Changes
-							</button>
 							<button type="button" class="btn btn-secondary" onclick="closeModal('editModal')">
 								Cancel
+							</button>
+							<button type="submit" class="btn btn-primary">
+								<i class="fas fa-save"></i> Save
 							</button>
 						</div>
 					</form>
@@ -215,13 +223,14 @@
 		<div class="modal" id="confirmModal">
 			<div class="modal-content small">
 				<div class="modal-header">
-					<h3><i class="fas fa-exclamation-triangle"></i> Confirm Action</h3>
+					<h3><i class="fas fa-exclamation-triangle"></i> Confirm</h3>
+					<button class="modal-close" onclick="closeModal('confirmModal')">&times;</button>
 				</div>
 				<div class="modal-body">
 					<p id="confirmMessage">Are you sure?</p>
 					<div class="form-actions">
-						<button class="btn btn-danger" id="confirmYes">Yes</button>
 						<button class="btn btn-secondary" onclick="closeModal('confirmModal')">Cancel</button>
+						<button class="btn btn-danger" id="confirmYes">Confirm</button>
 					</div>
 				</div>
 			</div>
@@ -231,7 +240,7 @@
 		<div class="status-messages" id="statusMessages"></div>
 	</div>
 
-	<small class="authorInfo">Crafted with care by <a href="https://github.com/theriturajps" target="_blank">Ritu Raj Pratap Singh</a></small>
+	<small class="authorInfo">Crafted by <a href="https://github.com/theriturajps" target="_blank">Ritu Raj Pratap Singh</a></small>
 
 	<script src="script.js"></script>
 </body>
