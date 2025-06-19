@@ -435,6 +435,14 @@ async function handleEditFile(e) {
 	const fileName = document.getElementById('editFileName').textContent;
 	const content = document.getElementById('editContent').value;
 
+	// Get the submit button
+	const submitButton = document.querySelector('#editForm button[type="submit"]');
+	const originalButtonText = submitButton.innerHTML;
+
+	// Show saving state
+	submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Saving...';
+	submitButton.disabled = true;
+
 	try {
 		const formData = new FormData();
 		const blob = new Blob([content], { type: 'text/plain' });
@@ -457,6 +465,10 @@ async function handleEditFile(e) {
 	} catch (error) {
 		console.error('Save file error:', error);
 		showMessage('File save failed', 'error');
+	} finally {
+		// Restore original button state
+		submitButton.innerHTML = originalButtonText;
+		submitButton.disabled = false;
 	}
 }
 
