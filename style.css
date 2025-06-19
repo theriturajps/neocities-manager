@@ -14,6 +14,87 @@ body {
 	padding: 10px;
 }
 
+/* Dark Mode Styles */
+body.dark-mode {
+	background-color: #1a1a1a;
+	color: #e0e0e0;
+}
+
+.dark-mode .header,
+.dark-mode .dashboard,
+.dark-mode .auth-section,
+.dark-mode .auth-card,
+.dark-mode .modal-content {
+	background-color: #2d2d2d;
+	color: #e0e0e0;
+}
+
+.dark-mode .file-list,
+.dark-mode .file-item,
+.dark-mode .toolbar {
+	background-color: #2d2d2d;
+	border-color: #444;
+}
+
+.dark-mode .form-group input,
+.dark-mode .form-group textarea,
+.dark-mode .file-action {
+	background-color: #3d3d3d;
+	border-color: #555;
+	color: #e0e0e0;
+}
+
+.dark-mode .breadcrumb {
+	color: #aaa;
+}
+
+.dark-mode .file-meta {
+	color: #aaa;
+}
+
+.dark-mode .status-message {
+	background-color: #3d3d3d;
+}
+
+/* Toggle Button */
+.toggleBtn {
+	width: 50px;
+	height: 24px;
+	background-color: #ccc;
+	border-radius: 12px;
+	position: relative;
+	cursor: pointer;
+	margin-left: auto;
+	transition: background-color 0.3s;
+}
+
+.toggleBtn::after {
+	content: '';
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	background-color: white;
+	top: 2px;
+	left: 2px;
+	transition: transform 0.3s;
+}
+
+.dark-mode .toggleBtn {
+	background-color: #3498db;
+}
+
+.dark-mode .toggleBtn::after {
+	transform: translateX(26px);
+}
+
+.headerItem {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+}
+
 /* Container */
 .container {
 	max-width: 1200px;

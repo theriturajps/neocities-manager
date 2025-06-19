@@ -4,8 +4,12 @@ let currentPath = '';
 let currentFiles = [];
 let authData = null;
 
+// Add event listener for toggle button
+document.querySelector('.toggleBtn').addEventListener('click', toggleDarkMode);
+
 // Initialize the application
 document.addEventListener('DOMContentLoaded', function () {
+	checkDarkModePreference();
 	checkAuthStatus();
 	setupEventListeners();
 });
@@ -657,5 +661,19 @@ function getFileIcon(fileName) {
 			return 'file-archive';
 		default:
 			return 'file';
+	}
+}
+
+// Dark mode toggle
+function toggleDarkMode() {
+	document.body.classList.toggle('dark-mode');
+	localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+}
+
+// Check for saved dark mode preference
+function checkDarkModePreference() {
+	const darkMode = localStorage.getItem('darkMode') === 'true';
+	if (darkMode) {
+		document.body.classList.add('dark-mode');
 	}
 }
