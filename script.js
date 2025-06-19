@@ -301,8 +301,9 @@ function updateBreadcrumb() {
 }
 
 // Refresh files
-function refreshFiles() {
+async function refreshFiles() {
 	loadFiles();
+	await loadSiteInfo();
 	showMessage('Files refreshed', 'info');
 }
 
