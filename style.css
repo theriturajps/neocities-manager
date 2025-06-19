@@ -196,30 +196,25 @@ body.dark-mode {
 }
 
 .auth-divider {
-	text-align: center;
-	color: #999;
-	font-size: 12px;
-	position: relative;
-	margin: 10px 0;
+  display: flex;
+  align-items: center;
+  text-align: center;
 }
 
-.auth-divider::before {
-	content: '';
-	position: absolute;
-	top: 50%;
-	left: 0;
-	right: 0;
-	height: 1px;
-	background: #eee;
-	z-index: 1;
+.auth-divider::before,
+.auth-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: #e0e0e0;
 }
 
-.auth-divider {
-	background: #fff;
-	padding: 0 10px;
-	z-index: 2;
-	position: relative;
+.auth-divider span {
+  padding: 0 10px;
+  color: #999;
+  font-size: 14px;
 }
+
 
 small.authorInfo {
 	font-size: 0.7rem;
