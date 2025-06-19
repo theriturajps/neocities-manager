@@ -37,6 +37,14 @@ async function checkAuthStatus() {
 		const response = await fetch(`${API_BASE_URL}/api/auth`);
 		const data = await response.json();
 
+		console.log(data);
+
+		if (data.result === 'error') {
+			showMessage(data.message, 'error');
+		} else if (data.hasUsername || data.hasApiKey) {
+			showMessage(`welcome ${data.username}`, 'info');
+		}
+
 		if (data.hasUsername || data.hasApiKey) {
 			authData = data;
 			document.getElementById('authSection').style.display = 'none';
@@ -304,7 +312,7 @@ function updateBreadcrumb() {
 async function refreshFiles() {
 	loadFiles();
 	await loadSiteInfo();
-	showMessage('Files refreshed', 'info');
+	showMessage('Files and Stats refreshed', 'info');
 }
 
 // Show upload modal
