@@ -40,9 +40,7 @@ async function checkAuthStatus() {
 	try {
 		const response = await fetch(`${API_BASE_URL}/api/auth`);
 		const data = await response.json();
-
-		console.log(data);
-
+		
 		if (data.result === 'error') {
 			showMessage(data.message, 'error');
 		} else if (data.hasUsername || data.hasApiKey) {
